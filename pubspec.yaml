@@ -35,6 +35,11 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  realm: ^1.4.0
+  shared_preferences: ^2.2.1
+  flutter_svg: ^2.0.7
+  flutter_launcher_icons: ^0.13.1
+  crypto: ^3.0.3
 
 dev_dependencies:
   flutter_test:
@@ -59,8 +64,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -88,3 +94,32 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: IBMPlexSansJp
+      fonts:
+        - asset: assets\fonts\ibm_plex_sans_jp\IBMPlexSansJP-Thin.ttf
+          weight: 100
+        - asset: assets\fonts\ibm_plex_sans_jp\IBMPlexSansJP-ExtraLight.ttf
+          weight: 200
+        - asset: assets\fonts\ibm_plex_sans_jp\IBMPlexSansJP-Light.ttf
+          weight: 300
+        - asset: assets\fonts\ibm_plex_sans_jp\IBMPlexSansJP-Regular.ttf
+          weight: 400
+        - asset: assets\fonts\ibm_plex_sans_jp\IBMPlexSansJP-Medium.ttf
+          weight: 500
+        - asset: assets\fonts\ibm_plex_sans_jp\IBMPlexSansJP-SemiBold.ttf
+          weight: 600
+        - asset: assets\fonts\ibm_plex_sans_jp\IBMPlexSansJP-Bold.ttf
+          weight: 700
+        - asset: assets\fonts\ibm_plex_sans_jp\IBMPlexSansJP-Bold.ttf
+          weight: 800
+        - asset: assets\fonts\ibm_plex_sans_jp\IBMPlexSansJP-Bold.ttf
+          weight: 900
+
+# icon
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/images/launcher/app-icon.png"
+  adaptive_icon_background: '#ffffff'
+  adaptive_icon_foreground: "assets/images/launcher/app-icon.png"
