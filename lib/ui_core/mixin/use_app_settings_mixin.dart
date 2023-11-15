@@ -6,4 +6,5 @@ mixin class UseAppSettingsMixin {
   SettingsNotifier get notifier => appSettings.notifier;
   bool get isEnabledPasscode => appSettings.model.isEnabledPasscode;
   bool get lockOnLaunched => appSettings.model.lockOnLaunched;
+  bool get isDark => appSettings.model.isDark;
 }

@@ -8,3 +8,13 @@ class SettingsNotifier extends ValueNotifier<AppSettingsModel> {
     notifyListeners();
   }
 }
+
+class ThemeNotifier extends ValueNotifier<bool> {
+  ThemeNotifier(super.value);
+
+  bool get isDark => value;
+
+  switchTheme(bool isDark) {
+    value = isDark;
+  }
+}

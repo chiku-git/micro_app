@@ -95,7 +95,7 @@ abstract class DialogBuilder {
   }
 
   void dismiss() {
-    Navigator.pop(context);
+    Navigator.of(context).pop();
   }
 
   AlertDialog build();

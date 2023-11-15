@@ -44,7 +44,6 @@ abstract class PasscodeState<T extends StatefulBaseWidget> extends BaseState<T> 
         return canClose();
       },
       child: Scaffold(
-        backgroundColor: UIColor.whiteSmoke,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,

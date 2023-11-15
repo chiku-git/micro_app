@@ -1,6 +1,4 @@
 import 'package:micro_memo/importer.dart';
-import 'package:micro_memo/ui_core/mixin/dialog_mixin.dart';
-import 'package:micro_memo/ui_core/mixin/navigator_mixin.dart';
 
 abstract class StatefulBaseWidget extends StatefulWidget {
   const StatefulBaseWidget({super.key});

@@ -14,14 +14,14 @@ sealed class SharedData<V> {
   }
 }
 
-class AppSettings extends SharedData<SettingsNotifier> {
+class AppSettings extends SharedData<ValueNotifier> {
   AppSettings(super.context);
 
   static String keySettings = 'settings';
 
   SettingsNotifier get notifier {
     SettingsNotifier getDefault() => SettingsNotifier(AppSettingsModel.getDefault());
-    return getSharedData(keySettings, getDefault);
+    return getSharedData(keySettings, getDefault) as SettingsNotifier;
   }
 
   set notifier(SettingsNotifier notifier) {

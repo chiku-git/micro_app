@@ -10,9 +10,8 @@ class TemplateSettingsWidget extends StatelessBaseWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 10, bottom: 5),
-          child: Text(Strings.template),
+        const SettingTitle(
+            title: Strings.template
         ),
         SettingRow(
             isTop: true,

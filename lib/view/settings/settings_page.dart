@@ -20,27 +20,36 @@ class _SettingsPageState extends BaseState<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(Strings.settingsTitle),
-        centerTitle: true,
-        elevation: 1,
-      ),
-      body: Container(
-        color: UIColor.snow,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const Margin(height: 20),
-              PasscodeSettingWidget(
-                viewModel: viewModel,
-              ),
-              const Margin(height: 20),
-              TemplateSettingsWidget(
-                viewModel: viewModel
-              )
-            ],
+    return WillPopScope(
+      onWillPop: () async {
+        viewModel.saveAppSettings();
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(Strings.settingsTitle),
+          centerTitle: true,
+          elevation: 1,
+        ),
+        body: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const Margin(height: 20),
+                PasscodeSettingWidget(
+                  viewModel: viewModel,
+                ),
+                const Margin(height: 20),
+                TemplateSettingsWidget(
+                    viewModel: viewModel
+                ),
+                const Margin(height: 20),
+                ThemeSettingWidget(
+                    viewModel: viewModel
+                )
+              ],
+            ),
           ),
         ),
       ),
