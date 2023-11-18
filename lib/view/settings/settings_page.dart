@@ -28,8 +28,6 @@ class _SettingsPageState extends BaseState<SettingsPage> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(Strings.settingsTitle),
-          centerTitle: true,
-          elevation: 1,
         ),
         body: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),

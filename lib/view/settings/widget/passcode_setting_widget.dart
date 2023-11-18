@@ -69,7 +69,9 @@ class _PasscodeSettingState extends BaseState<PasscodeSettingWidget> {
                               ? Strings.settled
                               : Strings.unSettled,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(color: UIColor.darkGray),
+                          style: TextStyle(
+                              color: AppColor.of(context).uiColors.subTextColor
+                          ),
                         ),
                       ),
                       const Icon(Icons.navigate_next)

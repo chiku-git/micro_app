@@ -40,8 +40,6 @@ abstract class MemoBaseState extends BaseState<MemoBasePage> {
             getTitle(),
             overflow: TextOverflow.ellipsis,
           ),
-          centerTitle: true,
-          elevation: 1,
           actions: _getActions(),
           automaticallyImplyLeading: false,
           leading: IconButton(
@@ -216,7 +214,7 @@ abstract class MemoBaseState extends BaseState<MemoBasePage> {
                 ),
                 ChoicesButtonAttr(
                     text: Strings.cancel,
-                    textColor: UIColor.crimson
+                    textColor: AppColor.of(context).themeColors.error
                 )
               ]
           );

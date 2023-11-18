@@ -31,8 +31,6 @@ class _HomePageState extends BaseState<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(Strings.homeTitle),
-          centerTitle: true,
-          elevation: 1,
           actions: [
             IconButton(
                 onPressed: () {
@@ -102,8 +100,13 @@ class _HomeRow extends StatelessBaseWidget {
       listenable: viewModel.appSettings.notifier,
       builder: (context, child) {
         return Container(
-          decoration: const BoxDecoration(
-              border: Border(bottom: BorderSide(color: UIColor.gainsBoro))),
+          decoration: BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(
+                      color: AppColor.of(context).uiColors.borderColor
+                  )
+              )
+          ),
           child: ListTile(
             contentPadding: const EdgeInsets.only(left: 20),
             title: Text(

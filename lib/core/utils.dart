@@ -31,3 +31,7 @@ double getScreenHeight(BuildContext context) {
 double getScreenWidth(BuildContext context) {
   return getScreenSize(context).width;
 }
+
+bool isDark(Brightness brightness) {
+return brightness == Brightness.dark;
+}

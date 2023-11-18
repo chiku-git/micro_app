@@ -24,7 +24,7 @@ class SettingRow extends StatefulBaseWidget {
 class _SettingRowState extends BaseState<SettingRow> {
   @override
   Widget build(BuildContext context) {
-    const borderColor = UIColor.gainsBoro;
+    final borderColor = AppColor.of(context).uiColors.borderColor;
     final isTappable = widget.onTap != null;
 
     return GestureDetector(
@@ -51,13 +51,13 @@ class _SettingRowState extends BaseState<SettingRow> {
                       : Radius.zero);
             }.call(),
             border: Border(
-              top: const BorderSide(color: borderColor, width: 1),
+              top: BorderSide(color: borderColor, width: 1),
               bottom: BorderSide(
                   color: borderColor,
                   width: !widget.isBottom ? 0 : 1
               ),
-              left: const BorderSide(color: borderColor, width: 1),
-              right: const BorderSide(color: borderColor, width: 1),
+              left: BorderSide(color: borderColor, width: 1),
+              right: BorderSide(color: borderColor, width: 1),
             )),
         child: ConstrainedBox(
           constraints: const BoxConstraints(minHeight: 50),

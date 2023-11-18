@@ -13,8 +13,6 @@ abstract class TemplateListBasePage extends StatelessBaseWidget {
         appBar: AppBar(
           title: const Text(Strings.template),
           automaticallyImplyLeading: canBack(),
-          centerTitle: true,
-          elevation: 1,
           actions: buildActions(context),
         ),
         body: StreamBuilder(
@@ -35,8 +33,13 @@ abstract class TemplateListBasePage extends StatelessBaseWidget {
                   final template = templates[index];
 
                   return Container(
-                    decoration: const BoxDecoration(
-                        border: Border(bottom: BorderSide(color: UIColor.gainsBoro))),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                color: AppColor.of(context).uiColors.borderColor
+                            )
+                        )
+                    ),
                     child: ListTile(
                       contentPadding: const EdgeInsets.only(left: 20),
                       title: Text(

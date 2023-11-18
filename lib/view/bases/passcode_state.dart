@@ -46,7 +46,9 @@ abstract class PasscodeState<T extends StatefulBaseWidget> extends BaseState<T> 
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
+          backgroundColor: AppColor.of(context).themeColors.background,
+          surfaceTintColor: Colors.transparent,
+          elevation: 0,
           actions: _getActions(),
         ),
         body: SingleChildScrollView(
@@ -86,7 +88,7 @@ abstract class PasscodeState<T extends StatefulBaseWidget> extends BaseState<T> 
                         shape: const CircleBorder(),
                         color: key == keyBackspace
                               ? Colors.transparent
-                              : UIColor.gainsBoro,
+                              : AppColor.of(context).uiColors.passcodeButtonTint,
                         child: Center(
                           child: key == keyBackspace
                               ? const Icon(Icons.backspace_outlined)
