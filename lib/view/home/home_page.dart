@@ -155,7 +155,7 @@ class _HomeRow extends StatelessBaseWidget {
 
     return PopupMenuButton<HomeListMenu>(
       elevation: 1,
-      icon: const Icon(color: Colors.grey, Icons.more_vert),
+      icon: const Icon(Icons.more_vert),
       onSelected: (HomeListMenu item) {
         switch (item) {
           case HomeListMenu.delete:

@@ -22,6 +22,8 @@ class SettingRow extends StatefulBaseWidget {
 
 /// 設定画面行用ウィジェット
 class _SettingRowState extends BaseState<SettingRow> {
+  Color? _backgroundColor;
+
   @override
   Widget build(BuildContext context) {
     final borderColor = AppColor.of(context).uiColors.borderColor;
@@ -43,6 +45,7 @@ class _SettingRowState extends BaseState<SettingRow> {
       },
       child: Container(
         decoration: BoxDecoration(
+            color: _backgroundColor,
             borderRadius: () {
               return BorderRadius.vertical(
                   top: widget.isTop ? const Radius.circular(10) : Radius.zero,
@@ -82,6 +85,12 @@ class _SettingRowState extends BaseState<SettingRow> {
   }
 
   void applyOnTapEffect({required bool onTapDown}) {
-
+    setState(() {
+      if (onTapDown) {
+        _backgroundColor = AppColor.of(context).uiColors.onRowTapColor;
+      } else {
+        _backgroundColor = null;
+      }
+    });
   }
 }

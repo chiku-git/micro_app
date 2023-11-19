@@ -5,8 +5,6 @@ class AppColor {
 
   AppColor._(this._context);
 
-  static const Color gainsBoro = Color(0xffdcdcdc);
-
   final BuildContext _context;
   AppColorScheme get _scheme {
     return isDark(Theme.of(_context).brightness) ? _dark : _light;
@@ -18,18 +16,20 @@ class AppColor {
   AppColorScheme get _light => AppColorScheme(
     themeColorScheme: Theme.of(_context).colorScheme,
     uiColorScheme: UIColorScheme(
-        passcodeButtonTint: const Color(0xffdcdcdc),
-        subTextColor: const Color(0xffa9a9a9),
-        borderColor: const Color(0xffbfbfbf),
+      passcodeButtonColor: const Color(0xffdcdcdc),
+      subTextColor: const Color(0xffa9a9a9),
+      borderColor: const Color(0xffbfbfbf),
+      onRowTapColor: const Color(0xffdcdcdc),
     ),
   );
 
   AppColorScheme get _dark => AppColorScheme(
     themeColorScheme: Theme.of(_context).colorScheme,
     uiColorScheme: UIColorScheme(
-        passcodeButtonTint: const Color(0xff2c2b29),
-        subTextColor: const Color(0xffa9a9a9),
-        borderColor: const Color(0xffdcdcdc),
+      passcodeButtonColor: const Color(0xff2c2b29),
+      subTextColor: const Color(0xffa9a9a9),
+      borderColor: const Color(0xffdcdcdc),
+      onRowTapColor: const Color(0xff2c2b29),
     ),
   );
 }
@@ -45,13 +45,15 @@ class AppColorScheme {
 }
 
 class UIColorScheme {
-  final Color passcodeButtonTint;
+  final Color passcodeButtonColor;
   final Color subTextColor;
   final Color borderColor;
+  final Color onRowTapColor;
 
   UIColorScheme({
-    required this.passcodeButtonTint,
+    required this.passcodeButtonColor,
     required this.subTextColor,
-    required this.borderColor
+    required this.borderColor,
+    required this.onRowTapColor,
   });
 }

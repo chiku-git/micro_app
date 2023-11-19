@@ -38,6 +38,5 @@ final class SettingsViewModel extends UseAppSettingsViewModel {
   switchTheme(bool isDark) {
     appSettings.model.isDark = isDark;
     appSettings.notifyPropertyChanged();
-    MicroMemoApp.switchTheme(isDark);
   }
 }

@@ -37,6 +37,8 @@ class Strings {
   static const confirmDisablePasscodeBody = "OFFにしますか";
   static const confirmRegisterPasscode = "パスコードを登録しますか";
   static const requirePasscodeOnLaunch = "起動時にパスコードを必要とする";
+  static const theme = "テーマ";
+  static const useDarkTheme = "ダークテーマを使用する";
   // パスコード
   static const passcode = "パスコード";
   static const inputPasscode = "$passcodeを入力してください";

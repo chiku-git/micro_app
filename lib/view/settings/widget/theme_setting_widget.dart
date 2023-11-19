@@ -24,12 +24,12 @@ class _ThemeSettingState extends BaseState<ThemeSettingWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SettingTitle(
-            title: "テーマ"
+            title: Strings.theme
         ),
         SettingRow(
             isTop: true,
             isBottom: true,
-            leading: const Text("ダークテーマを使用する"),
+            leading: const Text(Strings.useDarkTheme),
             trailing: ListenableBuilder(
                 listenable: _viewModel.appSettings.notifier,
                 builder: (context, child) {
@@ -37,6 +37,9 @@ class _ThemeSettingState extends BaseState<ThemeSettingWidget> {
                       value: _viewModel.isDark,
                       onChanged: (isDark) {
                         _viewModel.switchTheme(isDark);
+                        Future.delayed(const Duration(milliseconds: 150), () {
+                          MicroMemoApp.switchTheme(isDark);
+                        });
                       }
                   );
                 }

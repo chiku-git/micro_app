@@ -1,21 +1,14 @@
 import 'package:micro_memo/importer.dart';
 
 abstract class PasscodeState<T extends StatefulBaseWidget> extends BaseState<T> {
-  static const String keyBackspace = "x";
+  static const String backspace = "x";
   late final EditTextController passcodeController;
   String message = "";
   final keys = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    keyBackspace,
-    "0",
+    "1", "2", "3",
+    "4", "5", "6",
+    "7", "8", "9",
+    backspace,"0",
   ];
 
   @override
@@ -86,11 +79,11 @@ abstract class PasscodeState<T extends StatefulBaseWidget> extends BaseState<T> 
                         onPressed: () => _onButtonPressed(key),
                         elevation: 0,
                         shape: const CircleBorder(),
-                        color: key == keyBackspace
+                        color: key == backspace
                               ? Colors.transparent
-                              : AppColor.of(context).uiColors.passcodeButtonTint,
+                              : AppColor.of(context).uiColors.passcodeButtonColor,
                         child: Center(
-                          child: key == keyBackspace
+                          child: key == backspace
                               ? const Icon(Icons.backspace_outlined)
                               : Text(key, style: const TextStyle(fontSize: 25)),
                         ),
@@ -122,7 +115,7 @@ abstract class PasscodeState<T extends StatefulBaseWidget> extends BaseState<T> 
 
   void _onButtonPressed(String key) {
     switch (key) {
-      case keyBackspace:
+      case backspace:
         passcodeController.dropLast();
         break;
       default:
