@@ -4,6 +4,7 @@ abstract class MemoBaseState extends BaseState<MemoBasePage> {
   late final MemoViewModel viewModel;
   late final EditTextController bodyController;
   late final UndoHistoryController undoController;
+  late final FocusNode memoFocus;
 
   @override
   void initState() {
@@ -21,12 +22,17 @@ abstract class MemoBaseState extends BaseState<MemoBasePage> {
       bodyController.onTextChanged(bodyController.text);
     });
     undoController = UndoHistoryController();
+    memoFocus = FocusNode();
+    if (viewModel.isNew) {
+      _requestFocus();
+    }
   }
 
   @override
   void dispose() {
     bodyController.dispose();
     undoController.dispose();
+    memoFocus.dispose();
     super.dispose();
   }
 
@@ -92,12 +98,18 @@ abstract class MemoBaseState extends BaseState<MemoBasePage> {
                 border: InputBorder.none, hintText: Strings.writeMemo),
             keyboardType: TextInputType.multiline,
             maxLines: null,
-            autofocus: viewModel.isNew,
+            focusNode: memoFocus,
             undoController: undoController,
           ),
         ),
       ),
     );
+  }
+
+  _requestFocus() {
+    runOnDelayed(millis: 200, action: () {
+      memoFocus.requestFocus();
+    });
   }
 
   List<Widget> _getActions() {
@@ -118,7 +130,6 @@ abstract class MemoBaseState extends BaseState<MemoBasePage> {
               TextButton(
                 onPressed: () {
                   _onClickSave();
-                  finish(context: context);
                 },
                 child: const Text(
                   Strings.save,
@@ -135,10 +146,19 @@ abstract class MemoBaseState extends BaseState<MemoBasePage> {
   }
 
   _onClickSave() async {
-    primaryFocus?.unfocus();
     if (bodyController.isValid()) {
       await save();
     }
+    _finish();
+  }
+
+  _finish() {
+    int closeDelayed = 0;
+    if (memoFocus.hasPrimaryFocus || memoFocus.hasFocus) {
+      closeDelayed = 200;
+      memoFocus.unfocus();
+    }
+    runOnDelayed(millis: closeDelayed, action: () => finish(context: context));
   }
 
   _onClickUndo() {
@@ -158,13 +178,11 @@ abstract class MemoBaseState extends BaseState<MemoBasePage> {
         body: Strings.deleteMemoBody,
         onPositiveAction: () {
           viewModel.delete();
-          finish(context: context);
+          _finish();
         });
   }
 
-  _onClickClose() {
-    finish(context: context);
-  }
+  _onClickClose() => _finish();
 
   _onClickTemplate() async {
     final result = await showModalBottomSheet(

@@ -35,3 +35,7 @@ double getScreenWidth(BuildContext context) {
 bool isDark(Brightness brightness) {
 return brightness == Brightness.dark;
 }
+
+runOnDelayed({required int millis, required Function action}) {
+  Future.delayed(Duration(milliseconds: millis), () => action.call());
+}

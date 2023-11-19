@@ -15,13 +15,6 @@ abstract class StatelessBaseWidget
   initialize(BuildContext context);
 }
 
-abstract class StatelessUseAppSettingsWidget
-    extends StatelessBaseWidget with UseAppSettingsMixin {
-  StatelessUseAppSettingsWidget({super.key, required AppSettings appSettings}) {
-    this.appSettings = appSettings;
-  }
-}
-
 abstract class BaseState<T extends StatefulBaseWidget>
     extends State<T>
     with UseAppSettingsMixin, DialogMixin, NavigateMixin {
