@@ -44,7 +44,7 @@ class _HomePageState extends BaseState<HomePage> {
           automaticallyImplyLeading: false,
         ),
         body: StreamBuilder(
-          stream: viewModel.queryMemos(),
+          stream: viewModel.memos.stream,
           builder: (context, snapshot) {
             final data = snapshot.data;
 
@@ -77,12 +77,6 @@ class _HomePageState extends BaseState<HomePage> {
         ),
       ),
     );
-  }
-
-  void loadMemos() {
-    setState(() {
-      viewModel.loadMemos();
-    });
   }
 }
 

@@ -11,7 +11,8 @@ final class MemoDao extends Dao {
   }
 
   RealmResults<Memo> _query(String query, List<Object> args) {
-    return realm.query(query, args);
+    return realm.query<Memo>(query, args)
+                .query("TRUEPREDICATE SORT(createdAt DESC)");
   }
 
   Memo? findById(ObjectId id) {

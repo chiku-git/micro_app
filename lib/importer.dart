@@ -61,3 +61,4 @@ export 'view/splash_page.dart';
 export 'view/template/template_list_page.dart';
 export 'view/template/template_selection_page.dart';
 export 'constant/color_schemes.g.dart';
+export 'dart:async';

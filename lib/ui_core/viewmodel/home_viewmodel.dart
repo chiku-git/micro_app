@@ -2,22 +2,21 @@ import 'package:micro_memo/importer.dart';
 import 'package:realm/realm.dart' as realm;
 
 final class HomeViewModel extends UseAppSettingsViewModel {
-  realm.RealmResults<Memo>? _fetchedMemos;
+  late StreamController<realm.RealmResultsChanges<Memo>> memos;
 
   HomeViewModel(super.settings) {
     initialize();
   }
 
   void initialize() {
-    _fetchedMemos = null;
+    memos = StreamController();
   }
 
   void loadMemos() async {
-    _fetchedMemos = repo.fetchAllMemo();
-  }
-
-  Stream<realm.RealmResultsChanges<Memo>>? queryMemos() {
-    return _fetchedMemos?.changes;
+    Future(() {
+      final fetched = repo.fetchAllMemo();
+      memos.sink.addStream(fetched.changes);
+    });
   }
 
   void updateMemoPrivacy(Memo memo, bool isPrivate) {
